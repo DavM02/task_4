@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function createLinkedList() {
+            this.head = null
+            this.addValue = function (value) {
+                if (!this.head) {
+                    this.head = { value, next: null };
+                    return;
+                }
+
+                let current = this.head;
+                while (current.next) {
+                    current = current.next;
+                }
+
+                let newValue = { value, next: null };
+
+                current.next = newValue
+
+            }
+        }
+
+
+        const firstList = new createLinkedList()
+        firstList.addValue(2)
+        firstList.addValue(4)
+        firstList.addValue(3)
+
+        const secondList = new createLinkedList()
+        secondList.addValue(5)
+        secondList.addValue(6)
+        secondList.addValue(4)
+
+
+        function sumLists(firstList, secondList) {
+            let result = new createLinkedList();
+            let firstValue = firstList.head;
+            let secondValue = secondList.head;
+
+            let tail = 0;
+ 
+            while (firstValue || secondValue || tail) {
+                let sum = tail;  
+
+                if (firstValue) {
+                    sum += firstValue.value;
+                    firstValue = firstValue.next;
+                }
+
+                if (secondValue) {
+                    sum += secondValue.value;
+                    secondValue = secondValue.next;
+                }
+
+
+                tail = Math.floor(sum / 10);  
+
+                let lastDigit = sum % 10;  
+
+                result.addValue(lastDigit); 
+            }
+
+            return result;
+        }
+
+        
+        console.log(sumLists(firstList, secondList))
+
+
+ 
+
+ 
+
+
+    </script>
+</body>
+
+</html>

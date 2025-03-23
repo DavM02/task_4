@@ -42,13 +42,13 @@
         secondList.addValue(4)
 
 
-        function sumLists(firstList, secondList) {
+      function sumLists(firstList, secondList) {
             let result = new createLinkedList();
             let firstValue = firstList.head;
             let secondValue = secondList.head;
 
             let tail = 0;
- 
+           
             while (firstValue || secondValue || tail) {
                 let sum = tail;  
 
@@ -62,12 +62,14 @@
                     secondValue = secondValue.next;
                 }
 
-
+                
                 tail = Math.floor(sum / 10);  
 
-                let lastDigit = sum % 10;  
+               
+                let lastDigit = sum % 10;
 
-                result.addValue(lastDigit); 
+                
+                result.addValue(lastDigit);
             }
 
             return result;
